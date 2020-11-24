@@ -2,7 +2,7 @@
   "name": "Verse of the Day",
   "version": "1.0",
   "manifest_version": 2,
-  "description": "Daily Bible verses and latest BPilgrims updates.",
+  "description": "Daily Bible verses and latest BPilgrims updates",
   "homepage_url": "https://bpilgrims.com",
   "icons": {
     "16": "icons/icon16.png",
@@ -10,17 +10,8 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "content_scripts": [
-    {
-      "js": [
-        "js/jquery.min.js",
-        "js/index.js"
-      ],
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ]
-    }
+  "permissions": [
+    "https://bpilgrims.com/"
   ],
   "content_security_policy": "script-src 'self' https://dailyverses.net/; object-src 'self'",
   "browser_action": {
