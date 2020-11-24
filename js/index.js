@@ -1,6 +1,7 @@
 getTime();
 initVerse();
 initPhoto();
+getVerse();
 
 function initVerse() {
     bibleText = window.localStorage.getItem('bibleText');
@@ -8,10 +9,6 @@ function initVerse() {
     if (bibleText && bibleVerse) {
         document.getElementById("bibleText").innerHTML = bibleText;
         document.getElementById("bibleVerse").innerHTML = bibleVerse;
-        getVerse(false)
-    }
-    else {
-        getVerse(true);
     }
 }
 
@@ -27,7 +24,7 @@ function initPhoto() {
     }
 }
 
-function getVerse(setVerse) {
+function getVerse() {
     $.ajax({
         url: 'https://dailyverses.net/get/verse?language=kjv',
         dataType: 'JSONP',
@@ -36,9 +33,7 @@ function getVerse(setVerse) {
             el.innerHTML = json.html;
             window.localStorage.setItem('bibleText', el.getElementsByClassName("dailyVerses")[0].innerHTML);
             window.localStorage.setItem('bibleVerse', el.getElementsByClassName("dailyVerses")[1].getElementsByTagName("a")[0].innerHTML);
-            if (setVerse) {
-                initVerse();
-            }
+            initVerse();
         }
     });
 };
