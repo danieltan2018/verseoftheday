@@ -36,7 +36,9 @@ function getVerse(setVerse) {
             el.innerHTML = json.html;
             window.localStorage.setItem('bibleText', el.getElementsByClassName("dailyVerses")[0].innerHTML);
             window.localStorage.setItem('bibleVerse', el.getElementsByClassName("dailyVerses")[1].getElementsByTagName("a")[0].innerHTML);
-            initVerse();
+            if (setVerse) {
+                initVerse();
+            }
         }
     });
 };
