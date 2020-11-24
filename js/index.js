@@ -74,13 +74,12 @@ function getWP() {
                 post = JSON.parse(this.responseText);
                 link = post[0].link;
                 title = post[0].title.rendered;
-                document.getElementById("wp_link").href = link;
-                document.getElementById("wp_link").innerHTML = "Latest from BPilgrims.com: " + title;
+                document.getElementById("wp_title").innerHTML = "Latest from BPilgrims.com: " + title;
                 var ex = document.createElement('html');
                 ex.innerHTML = post[0].excerpt.rendered;
                 document.getElementById("wp_excerpt").innerHTML = ex.getElementsByTagName("p")[0].textContent.split(" ").splice(0, 25).join(" ") + "... ";
-                document.getElementById("wp_excerpt").innerHTML += '<a id="wp_link2">Read More &raquo;</a>'
-                document.getElementById("wp_link2").href = link;
+                document.getElementById("wp_excerpt").innerHTML += '<a id="wp_link">Read More &raquo;</a>'
+                document.getElementById("wp_link").href = link;
             }
         }
     };
