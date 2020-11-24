@@ -2,6 +2,7 @@ getTime();
 initVerse();
 initPhoto();
 getVerse();
+getWP();
 
 function initVerse() {
     bibleText = window.localStorage.getItem('bibleText');
@@ -63,6 +64,28 @@ function getTime() {
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('date').innerHTML = now.toLocaleDateString('en-SG', options);
     var t = setTimeout(getTime, 500);
+}
+
+function getWP() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                post = JSON.parse(this.responseText);
+                link = post[0].link;
+                title = post[0].title.rendered;
+                document.getElementById("wp_link").href = link;
+                document.getElementById("wp_link").innerHTML = "Latest from BPilgrims.com: " + title;
+                var ex = document.createElement('html');
+                ex.innerHTML = post[0].excerpt.rendered;
+                document.getElementById("wp_excerpt").innerHTML = ex.getElementsByTagName("p")[0].textContent.split(" ").splice(0, 25).join(" ") + "... ";
+                document.getElementById("wp_excerpt").innerHTML += '<a id="wp_link2">Read More &raquo;</a>'
+                document.getElementById("wp_link2").href = link;
+            }
+        }
+    };
+    xhr.open("GET", "https://bpilgrims.com/wp-json/wp/v2/posts?per_page=1&_fields=link,title,excerpt", true);
+    xhr.send();
 }
 
 function reveal() {
