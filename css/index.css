@@ -1,9 +1,5 @@
 body {
     background-color:#000000;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
     height: 100%;
     width: 100%;
     animation: fadein 0.5s linear;
