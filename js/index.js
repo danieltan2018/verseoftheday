@@ -42,7 +42,7 @@ function getVerse() {
 
 function getPhoto(setPhoto) {
     var imgxhr = new XMLHttpRequest();
-    imgxhr.open("GET", "https://source.unsplash.com/1920x1080/?nature,background");
+    imgxhr.open("GET", "https://source.unsplash.com/2560x1440/?landscape,background");
     imgxhr.responseType = "blob";
     imgxhr.onload = function () {
         if (imgxhr.status === 200) {
